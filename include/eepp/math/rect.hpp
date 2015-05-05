@@ -183,12 +183,12 @@ bool tRECT<T>::IntersectCircle( Vector2<T> pos, const T& radius ) {
 
 template <typename T>
 bool tRECT<T>::IntersectCircles( const tRECT<T>& b ) {
-	eeFloat ra = (eeFloat)(Right - Left) * 0.5f;
-	eeFloat rb = (eeFloat)(b.Right - b.Left) * 0.5f;
-	eeFloat dist = ra + rb;
-	eeFloat dx = (b.Left + rb) - (Left + ra);
-	eeFloat dy = (b.Top + rb) - (Top + ra);
-	eeFloat res = (dx * dx) + (dy * dy);
+	Float ra = (Float)(Right - Left) * 0.5f;
+	Float rb = (Float)(b.Right - b.Left) * 0.5f;
+	Float dist = ra + rb;
+	Float dx = (b.Left + rb) - (Left + ra);
+	Float dy = (b.Top + rb) - (Top + ra);
+	Float res = (dx * dx) + (dy * dy);
 
 	if ( res <= (dist * dist))
 		return true;
@@ -228,7 +228,7 @@ void tRECT<T>::Scale( Vector2<T> scale, const Vector2<T>& center ) {
 
 template <typename T>
 void tRECT<T>::Scale( T scale, const Vector2<T>& center ) {
-	Scale( eeVector2f( scale, scale ), center );
+	Scale( Vector2f( scale, scale ), center );
 }
 
 template <typename T>
@@ -241,11 +241,11 @@ void tRECT<T>::Scale( Vector2<T> scale ) {
 	Scale( scale, Center() );
 }
 
-typedef tRECT<eeUint>		eeRectu;
-typedef tRECT<eeFloat>		eeRectf;
-typedef tRECT<eeFloat>		eeAABB; // Axis-Aligned Bounding Box
-typedef tRECT<eeInt>		eeRecti;
-typedef tRECT<Int32>		eeRect;
+typedef tRECT<unsigned int>	Rectu;
+typedef tRECT<Float>		Rectf;
+typedef tRECT<Float>		eeAABB; // Axis-Aligned Bounding Box
+typedef tRECT<int>			Recti;
+typedef tRECT<Int32>		Rect;
 
 }}
 
