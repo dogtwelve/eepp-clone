@@ -1,0 +1,10 @@
+../../src/
+../../include/
+../../src/examples/strobe
+../../../eeiv/src
+.
+../../include/eepp/graphics
+../../src/eepp/graphics
+../../include/eepp/ui
+../../src/eepp/ui
+../../src/eepp/helper/freetype2/include/

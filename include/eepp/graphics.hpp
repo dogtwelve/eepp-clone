@@ -1,0 +1,44 @@
+#ifndef EEPP_GRAPHICS_HPP
+#define EEPP_GRAPHICS_HPP
+
+#include <eepp/graphics/renderer/gl.hpp>
+#include <eepp/graphics/blendmode.hpp>
+#include <eepp/graphics/pixeldensity.hpp>
+#include <eepp/graphics/renderer/renderergl.hpp>
+#include <eepp/graphics/renderer/renderergl3.hpp>
+#include <eepp/graphics/renders.hpp>
+#include <eepp/graphics/image.hpp>
+#include <eepp/graphics/texture.hpp>
+#include <eepp/graphics/textureloader.hpp>
+#include <eepp/graphics/texturefactory.hpp>
+#include <eepp/graphics/texturepacker.hpp>
+#include <eepp/graphics/subtexture.hpp>
+#include <eepp/graphics/textureatlas.hpp>
+#include <eepp/graphics/globaltextureatlas.hpp>
+#include <eepp/graphics/textureatlasmanager.hpp>
+#include <eepp/graphics/sprite.hpp>
+#include <eepp/graphics/particle.hpp>
+#include <eepp/graphics/particlesystem.hpp>
+#include <eepp/graphics/font.hpp>
+#include <eepp/graphics/texturefont.hpp>
+#include <eepp/graphics/ttffont.hpp>
+#include <eepp/graphics/texturefontloader.hpp>
+#include <eepp/graphics/ttffontloader.hpp>
+#include <eepp/graphics/fontmanager.hpp>
+#include <eepp/graphics/primitives.hpp>
+#include <eepp/graphics/scrollparallax.hpp>
+#include <eepp/graphics/console.hpp>
+#include <eepp/graphics/batchrenderer.hpp>
+#include <eepp/graphics/globalbatchrenderer.hpp>
+#include <eepp/graphics/textcache.hpp>
+#include <eepp/graphics/pixelperfect.hpp>
+#include <eepp/graphics/shader.hpp>
+#include <eepp/graphics/shaderprogram.hpp>
+#include <eepp/graphics/shaderprogrammanager.hpp>
+#include <eepp/graphics/textureatlasloader.hpp>
+#include <eepp/graphics/framebuffer.hpp>
+#include <eepp/graphics/vertexbuffer.hpp>
+#include <eepp/graphics/vertexbufferogl.hpp>
+#include <eepp/graphics/vertexbuffervbo.hpp>
+
+#endif
