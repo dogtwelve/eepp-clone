@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{D7E2DFE1-61DD-5D4B-A1BB-0DFE66A41221}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\examples">
+      <UniqueIdentifier>{CE42E020-8EE6-C648-AEDD-7B9A512FC3D0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\examples\external_shader">
+      <UniqueIdentifier>{22239804-9AE4-F24A-ACC0-AF5842DC4FF1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\examples\external_shader\external_shader.cpp">
+      <Filter>src\examples\external_shader</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{2C59A5F4-AC08-C64B-836B-9D0E0FCD654C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\test">
+      <UniqueIdentifier>{EBF7AC04-563D-CC48-840D-0C8D4ED1B7F7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\test\eetest.cpp">
+      <Filter>src\test</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{5376843E-E712-AA43-BFEB-7E191D6E7076}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp">
+      <UniqueIdentifier>{3C5EFEA1-B5B8-B345-BE73-47AACB836D81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper">
+      <UniqueIdentifier>{33599A81-18D9-A542-8C69-7DBDF6214879}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\jpeg-compressor">
+      <UniqueIdentifier>{01A0EA04-4E5E-2A49-B327-F4605BAEE36E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\eepp\helper\jpeg-compressor\jpgd.cpp">
+      <Filter>src\eepp\helper\jpeg-compressor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\jpeg-compressor\jpge.cpp">
+      <Filter>src\eepp\helper\jpeg-compressor</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

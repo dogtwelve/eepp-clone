@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{F1FF2EA3-FE84-684B-B07E-0728F797EE9D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp">
+      <UniqueIdentifier>{0CA49F44-3E51-5C45-9D2E-5D612F4DBD5A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper">
+      <UniqueIdentifier>{153FBF33-2494-DD40-B770-2B3560C80D4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\glew">
+      <UniqueIdentifier>{959407DB-26E3-5D47-8AD4-F132C3D25582}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\eepp\helper\glew\glew.c">
+      <Filter>src\eepp\helper\glew</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

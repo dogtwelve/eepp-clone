@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|Win32">
+      <Configuration>debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|Win32">
+      <Configuration>release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0E151677-4C65-B049-BBDB-2F9B6D0E8DCF}</ProjectGuid>
+    <RootNamespace>eepp-static</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
+    <OutDir>..\..\libs\windows\</OutDir>
+    <IntDir>..\..\obj\windows\debug\eepp-static\</IntDir>
+    <TargetName>eepp-static-debug</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
+    <OutDir>..\..\libs\windows\</OutDir>
+    <IntDir>..\..\obj\windows\release\eepp-static\</IntDir>
+    <TargetName>eepp-static</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\src\eepp\helper\freetype2\include;..\..\src\eepp\helper\zlib;..\..\src\eepp\helper\libzip\vs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>EE_BACKEND_SDL_ACTIVE;EE_SDL_VERSION_2;EE_STATIC;DEBUG;EE_DEBUG;EE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader></PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)eepp-static-debug.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>EE_BACKEND_SDL_ACTIVE;EE_SDL_VERSION_2;EE_STATIC;DEBUG;EE_DEBUG;EE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\src\eepp\helper\freetype2\include;..\..\src\eepp\helper\zlib;..\..\src\eepp\helper\libzip\vs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  <Lib>
+    <OutputFile>$(OutDir)eepp-static-debug.lib</OutputFile>
+  </Lib>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\src\eepp\helper\freetype2\include;..\..\src\eepp\helper\zlib;..\..\src\eepp\helper\libzip\vs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>EE_BACKEND_SDL_ACTIVE;EE_SDL_VERSION_2;EE_STATIC;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader></PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat></DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>EE_BACKEND_SDL_ACTIVE;EE_SDL_VERSION_2;EE_STATIC;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\src\eepp\helper\freetype2\include;..\..\src\eepp\helper\zlib;..\..\src\eepp\helper\libzip\vs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  <Lib>
+    <OutputFile>$(OutDir)eepp-static.lib</OutputFile>
+  </Lib>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\eepp\system\platform\win\clockimpl.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\platform\win\conditionimpl.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\platform\win\muteximpl.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\platform\win\threadimpl.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\platform\win\threadlocalimpl.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\network\platform\win\socketimpl.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\core\debug.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\core\memorymanager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\core\string.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\core\version.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\math\easing.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\math\interpolation1d.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\math\interpolation2d.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\math\mtrand.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\math\perlinnoise.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\base64.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\clock.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\color.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\condition.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\filesystem.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\inifile.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\iostreamfile.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\iostreammemory.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\lock.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\log.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\md5.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\mutex.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\objectloader.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\pack.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\packmanager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\pak.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\rc4.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\resourceloader.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\safedatapointer.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\sys.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\thread.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\threadlocal.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\time.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\translator.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\system\zip.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\audio\audiodevice.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\audio\audiolistener.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\audio\music.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\audio\openal.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\audio\sound.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\audio\soundbuffer.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\audio\soundfile.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\audio\soundfiledefault.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\audio\soundfileogg.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\audio\soundstream.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\arcdrawable.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\batchrenderer.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\blendmode.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\circledrawable.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\console.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\convexshapedrawable.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\drawable.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\drawablegroup.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\drawableresource.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\drawablesearcher.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\font.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\fontmanager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\fonttruetype.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\fonttruetypeloader.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\framebuffer.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\framebufferfbo.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\framebuffermanager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\globalbatchrenderer.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\globaltextureatlas.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\image.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\ninepatch.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\ninepatchmanager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\particle.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\particlesystem.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\pixeldensity.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\primitivedrawable.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\primitives.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\rectangledrawable.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\scrollparallax.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\shader.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\shaderprogram.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\shaderprogrammanager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\sprite.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\subtexture.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\text.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\texture.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\textureatlas.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\textureatlasloader.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\textureatlasmanager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\texturefactory.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\textureloader.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\texturepacker.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\texturepackernode.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\texturepackertex.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\texturesaver.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\vertexbuffer.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\vertexbuffermanager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\vertexbufferogl.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\vertexbuffervbo.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\renderer\clippingmask.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\renderer\renderer.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\renderer\renderergl.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\renderer\renderergl3.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\renderer\renderergl3cp.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\graphics\renderer\renderergles2.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\clipboard.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\cursor.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\cursormanager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\engine.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\input.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\inputfinger.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\inputhelper.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\inputtextbuffer.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\joystick.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\joystickmanager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\platformimpl.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\view.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\window.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\platform\null\nullimpl.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\network\ftp.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\network\http.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\network\ipaddress.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\network\packet.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\network\socket.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\network\socketselector.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\network\tcplistener.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\network\tcpsocket.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\network\udpsocket.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\network\uri.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\network\ssl\sslsocket.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uibackground.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uiborder.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uicheckbox.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uicombobox.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uicommondialog.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uicontrol.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uicontrolanim.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uidragablecontrol.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uidropdownlist.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uievent.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uieventkey.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uieventmouse.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uigridlayout.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uiimage.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uilayout.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uilinearlayout.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uilistbox.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uilistboxitem.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uiloader.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uimanager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uimenu.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uimenucheckbox.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uimenuitem.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uimenuseparator.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uimenusubmenu.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uimessage.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uimessagebox.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uipopupmenu.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uiprogressbar.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uipushbutton.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uiradiobutton.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uirelativelayout.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uiscrollbar.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uiscrollview.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uiselectbutton.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uiskin.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uiskincomplex.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uiskinsimple.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uiskinstate.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uislider.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uisliderbutton.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uispinbox.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uisprite.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uisubtexture.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uitab.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uitable.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uitablecell.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uitabwidget.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uitextedit.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uitextinput.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uitextinputpassword.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uitextview.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uitheme.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uithemedefault.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uithememanager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uitooltip.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uitouchdragablewidget.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uiwidget.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uiwidgetcreator.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uiwindow.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\uiwinmenu.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\tools\textureatlaseditor.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\tools\textureatlasnew.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\ui\tools\textureatlassubtextureeditor.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\arbiter.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\area.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\body.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\moment.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\physicsmanager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\shape.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\shapecircle.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\shapecirclesprite.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\shapepoint.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\shapepoly.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\shapepolysprite.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\shapesegment.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\space.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\constraints\constraint.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\constraints\dampedrotaryspring.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\constraints\dampedspring.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\constraints\gearjoint.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\constraints\groovejoint.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\constraints\pinjoint.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\constraints\pivotjoint.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\constraints\ratchetjoint.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\constraints\rotarylimitjoint.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\constraints\simplemotor.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\physics\constraints\slidejoint.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\gameobject.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\gameobjectobject.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\gameobjectpolygon.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\gameobjectpolyline.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\gameobjectsprite.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\gameobjectsubtexture.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\gameobjectsubtextureex.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\gameobjectvirtual.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\maplayer.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\maplight.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\maplightmanager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\mapobjectlayer.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\tilemap.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\tilemaplayer.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\mapeditor\mapeditor.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\mapeditor\maplayerproperties.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\mapeditor\mapobjectproperties.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\mapeditor\tilemapproperties.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\mapeditor\uigotypenew.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\mapeditor\uimap.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\mapeditor\uimaplayernew.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\maps\mapeditor\uimapnew.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\backend\SDL2\backendsdl2.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\backend\SDL2\clipboardsdl2.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\backend\SDL2\cursormanagersdl2.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\backend\SDL2\cursorsdl2.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\backend\SDL2\inputsdl2.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\backend\SDL2\joystickmanagersdl2.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\backend\SDL2\joysticksdl2.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\backend\SDL2\windowsdl2.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\backend\SDL2\wminfo.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\platform\win\cursorwin.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\window\platform\win\winimpl.cpp">
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="freetype-static.vcxproj">
+      <Project>{2F0885F3-8A52-2E47-AA3F-8F7EDCA57A0B}</Project>
+    </ProjectReference>
+    <ProjectReference Include="SOIL2-static.vcxproj">
+      <Project>{B5972C4B-337C-C24C-8A47-6AA60BD52007}</Project>
+    </ProjectReference>
+    <ProjectReference Include="chipmunk-static.vcxproj">
+      <Project>{6D35D801-1539-CE45-BBD9-561960C3C9FA}</Project>
+    </ProjectReference>
+    <ProjectReference Include="libzip-static.vcxproj">
+      <Project>{D702D6E0-08E4-2D4F-A1DA-EEB80CE3BFFB}</Project>
+    </ProjectReference>
+    <ProjectReference Include="stb_vorbis-static.vcxproj">
+      <Project>{4C789B42-67F3-2A45-9033-CD475BF626BF}</Project>
+    </ProjectReference>
+    <ProjectReference Include="jpeg-compressor-static.vcxproj">
+      <Project>{6D4E1C98-FF96-0941-86C1-72175A468356}</Project>
+    </ProjectReference>
+    <ProjectReference Include="zlib-static.vcxproj">
+      <Project>{3947370E-DCAB-894F-8E9C-EF591407151A}</Project>
+    </ProjectReference>
+    <ProjectReference Include="imageresampler-static.vcxproj">
+      <Project>{56D7B8D9-B6E8-6A4A-B168-B694C39486BC}</Project>
+    </ProjectReference>
+    <ProjectReference Include="pugixml-static.vcxproj">
+      <Project>{5603AFF4-D6A5-A74A-A2FF-3406AEA75349}</Project>
+    </ProjectReference>
+    <ProjectReference Include="glew-static.vcxproj">
+      <Project>{9D35EBD9-E1B8-3A4F-9DF0-D0EA8B30203A}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{EC8072F7-5916-B34A-9DFF-325288C79658}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\examples">
+      <UniqueIdentifier>{302F2FCD-025D-7645-8AB1-4070ECD92C1C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\examples\fonts">
+      <UniqueIdentifier>{E5F43D57-C63F-144B-AA1D-E53F7DE796BC}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\examples\fonts\fonts.cpp">
+      <Filter>src\examples\fonts</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

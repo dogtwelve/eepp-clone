@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{3DE8DCE3-B3B2-3E4A-A589-7085A70B20AF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\examples">
+      <UniqueIdentifier>{0D8674AB-A39D-504D-86E8-ECBD0E9CD1E4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\examples\empty_window">
+      <UniqueIdentifier>{11416D99-F73F-8F4A-B8FE-5D7F7D14C98E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\examples\empty_window\empty_window.cpp">
+      <Filter>src\examples\empty_window</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

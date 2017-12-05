@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{1BCF7C03-17EC-BA4D-8C85-7F18DAED5D64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp">
+      <UniqueIdentifier>{65A20146-19B4-DF48-80D5-971798B6FDA2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper">
+      <UniqueIdentifier>{B82FA31E-7D53-4540-9142-49248BB6ABE4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2">
+      <UniqueIdentifier>{A26C1054-7D3B-874F-B9EE-49A319B5080D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src">
+      <UniqueIdentifier>{E9AB16C7-5E06-DA4F-B505-290C8848ED0D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\autofit">
+      <UniqueIdentifier>{95F272B0-3B09-6A4D-80D5-90A1BE6CCF52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\base">
+      <UniqueIdentifier>{EFBCEC98-FB51-ED42-8520-937569058C93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\bdf">
+      <UniqueIdentifier>{A1DDA9C9-AF70-6743-9149-D10FAA3B89E0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\bzip2">
+      <UniqueIdentifier>{1F68E670-415C-3F4B-97C1-9F4151045315}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\cache">
+      <UniqueIdentifier>{11327256-4B15-F041-8E96-A9BB9580BC89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\cff">
+      <UniqueIdentifier>{7BE264AB-405B-EC46-BEED-51119C123BA9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\cid">
+      <UniqueIdentifier>{D554B483-F65E-1F49-98C6-5BED63D2FBFA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\gxvalid">
+      <UniqueIdentifier>{702D635D-0000-7C49-80F9-4B6D861A7141}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\gzip">
+      <UniqueIdentifier>{17E21DAB-C6AE-B244-9550-3901047CF34D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\lzw">
+      <UniqueIdentifier>{D2F05686-F965-914C-B164-E2B4755F4484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\otvalid">
+      <UniqueIdentifier>{82518D94-3BC0-F543-8875-DE2A5C5835ED}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\pcf">
+      <UniqueIdentifier>{8F618138-998A-E741-A096-3E99D5F731EE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\pfr">
+      <UniqueIdentifier>{37376FC5-F30F-824B-8652-EB9801B78A5E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\psaux">
+      <UniqueIdentifier>{2E0CF335-B579-774F-99D7-9244EA36452B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\pshinter">
+      <UniqueIdentifier>{44493FFC-6B00-FC43-8B96-1D7BEE13C860}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\psnames">
+      <UniqueIdentifier>{D7A77C50-8E36-F54C-8FEF-1ABDE50EAE64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\raster">
+      <UniqueIdentifier>{0655D81B-FFCF-6C46-A9EB-5595A183BD4E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\sfnt">
+      <UniqueIdentifier>{1B26E42D-3688-5144-80F0-65B1E3C95BCA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\smooth">
+      <UniqueIdentifier>{291302F5-20EF-994D-A62B-FEEB0D0E0E3B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\truetype">
+      <UniqueIdentifier>{83A528BE-7F5E-CE47-9329-5D0B7CD9C7CB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\type1">
+      <UniqueIdentifier>{90FE1AF9-20BB-EE4C-954A-09A9BF313206}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\type42">
+      <UniqueIdentifier>{1B73427E-F6F3-BF48-96C9-5A5318D6E48D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\freetype2\src\winfonts">
+      <UniqueIdentifier>{6C170ECA-061F-E64B-A6E9-72E7F81EB730}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\autofit\afangles.c">
+      <Filter>src\eepp\helper\freetype2\src\autofit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\autofit\afcjk.c">
+      <Filter>src\eepp\helper\freetype2\src\autofit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\autofit\afdummy.c">
+      <Filter>src\eepp\helper\freetype2\src\autofit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\autofit\afglobal.c">
+      <Filter>src\eepp\helper\freetype2\src\autofit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\autofit\afhints.c">
+      <Filter>src\eepp\helper\freetype2\src\autofit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\autofit\afindic.c">
+      <Filter>src\eepp\helper\freetype2\src\autofit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\autofit\aflatin.c">
+      <Filter>src\eepp\helper\freetype2\src\autofit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\autofit\afloader.c">
+      <Filter>src\eepp\helper\freetype2\src\autofit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\autofit\afmodule.c">
+      <Filter>src\eepp\helper\freetype2\src\autofit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\autofit\afpic.c">
+      <Filter>src\eepp\helper\freetype2\src\autofit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\autofit\afwarp.c">
+      <Filter>src\eepp\helper\freetype2\src\autofit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\basepic.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftadvanc.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftapi.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftbbox.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftbdf.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftbitmap.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftcalc.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftcid.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftdbgmem.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftdebug.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftfstype.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftgasp.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftgloadr.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftglyph.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftgxval.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftinit.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftlcdfil.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftmm.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftobjs.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftotval.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftoutln.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftpatent.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftpfr.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftpic.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftrfork.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftsnames.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftstream.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftstroke.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftsynth.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftsystem.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\fttrigon.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\fttype1.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftutil.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftwinfnt.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\base\ftxf86.c">
+      <Filter>src\eepp\helper\freetype2\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\bdf\bdfdrivr.c">
+      <Filter>src\eepp\helper\freetype2\src\bdf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\bdf\bdflib.c">
+      <Filter>src\eepp\helper\freetype2\src\bdf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\bzip2\ftbzip2.c">
+      <Filter>src\eepp\helper\freetype2\src\bzip2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cache\ftcbasic.c">
+      <Filter>src\eepp\helper\freetype2\src\cache</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cache\ftccache.c">
+      <Filter>src\eepp\helper\freetype2\src\cache</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cache\ftccmap.c">
+      <Filter>src\eepp\helper\freetype2\src\cache</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cache\ftcglyph.c">
+      <Filter>src\eepp\helper\freetype2\src\cache</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cache\ftcimage.c">
+      <Filter>src\eepp\helper\freetype2\src\cache</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cache\ftcmanag.c">
+      <Filter>src\eepp\helper\freetype2\src\cache</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cache\ftcmru.c">
+      <Filter>src\eepp\helper\freetype2\src\cache</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cache\ftcsbits.c">
+      <Filter>src\eepp\helper\freetype2\src\cache</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cff\cffcmap.c">
+      <Filter>src\eepp\helper\freetype2\src\cff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cff\cffdrivr.c">
+      <Filter>src\eepp\helper\freetype2\src\cff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cff\cffgload.c">
+      <Filter>src\eepp\helper\freetype2\src\cff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cff\cffload.c">
+      <Filter>src\eepp\helper\freetype2\src\cff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cff\cffobjs.c">
+      <Filter>src\eepp\helper\freetype2\src\cff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cff\cffparse.c">
+      <Filter>src\eepp\helper\freetype2\src\cff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cff\cffpic.c">
+      <Filter>src\eepp\helper\freetype2\src\cff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cid\cidgload.c">
+      <Filter>src\eepp\helper\freetype2\src\cid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cid\cidload.c">
+      <Filter>src\eepp\helper\freetype2\src\cid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cid\cidobjs.c">
+      <Filter>src\eepp\helper\freetype2\src\cid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cid\cidparse.c">
+      <Filter>src\eepp\helper\freetype2\src\cid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\cid\cidriver.c">
+      <Filter>src\eepp\helper\freetype2\src\cid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvbsln.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvcommn.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvfeat.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvjust.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvkern.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvlcar.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvmod.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvmort.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvmort0.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvmort1.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvmort2.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvmort4.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvmort5.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvmorx.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvmorx0.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvmorx1.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvmorx2.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvmorx4.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvmorx5.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvopbd.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvprop.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gxvalid\gxvtrak.c">
+      <Filter>src\eepp\helper\freetype2\src\gxvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\gzip\ftgzip.c">
+      <Filter>src\eepp\helper\freetype2\src\gzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\lzw\ftlzw.c">
+      <Filter>src\eepp\helper\freetype2\src\lzw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\lzw\ftzopen.c">
+      <Filter>src\eepp\helper\freetype2\src\lzw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\otvalid\otvbase.c">
+      <Filter>src\eepp\helper\freetype2\src\otvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\otvalid\otvcommn.c">
+      <Filter>src\eepp\helper\freetype2\src\otvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\otvalid\otvgdef.c">
+      <Filter>src\eepp\helper\freetype2\src\otvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\otvalid\otvgpos.c">
+      <Filter>src\eepp\helper\freetype2\src\otvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\otvalid\otvgsub.c">
+      <Filter>src\eepp\helper\freetype2\src\otvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\otvalid\otvjstf.c">
+      <Filter>src\eepp\helper\freetype2\src\otvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\otvalid\otvmath.c">
+      <Filter>src\eepp\helper\freetype2\src\otvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\otvalid\otvmod.c">
+      <Filter>src\eepp\helper\freetype2\src\otvalid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\pcf\pcfdrivr.c">
+      <Filter>src\eepp\helper\freetype2\src\pcf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\pcf\pcfread.c">
+      <Filter>src\eepp\helper\freetype2\src\pcf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\pcf\pcfutil.c">
+      <Filter>src\eepp\helper\freetype2\src\pcf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\pfr\pfrcmap.c">
+      <Filter>src\eepp\helper\freetype2\src\pfr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\pfr\pfrdrivr.c">
+      <Filter>src\eepp\helper\freetype2\src\pfr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\pfr\pfrgload.c">
+      <Filter>src\eepp\helper\freetype2\src\pfr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\pfr\pfrload.c">
+      <Filter>src\eepp\helper\freetype2\src\pfr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\pfr\pfrobjs.c">
+      <Filter>src\eepp\helper\freetype2\src\pfr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\pfr\pfrsbit.c">
+      <Filter>src\eepp\helper\freetype2\src\pfr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\psaux\afmparse.c">
+      <Filter>src\eepp\helper\freetype2\src\psaux</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\psaux\psauxmod.c">
+      <Filter>src\eepp\helper\freetype2\src\psaux</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\psaux\psconv.c">
+      <Filter>src\eepp\helper\freetype2\src\psaux</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\psaux\psobjs.c">
+      <Filter>src\eepp\helper\freetype2\src\psaux</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\psaux\t1cmap.c">
+      <Filter>src\eepp\helper\freetype2\src\psaux</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\psaux\t1decode.c">
+      <Filter>src\eepp\helper\freetype2\src\psaux</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\pshinter\pshalgo.c">
+      <Filter>src\eepp\helper\freetype2\src\pshinter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\pshinter\pshglob.c">
+      <Filter>src\eepp\helper\freetype2\src\pshinter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\pshinter\pshmod.c">
+      <Filter>src\eepp\helper\freetype2\src\pshinter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\pshinter\pshpic.c">
+      <Filter>src\eepp\helper\freetype2\src\pshinter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\pshinter\pshrec.c">
+      <Filter>src\eepp\helper\freetype2\src\pshinter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\psnames\psmodule.c">
+      <Filter>src\eepp\helper\freetype2\src\psnames</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\psnames\pspic.c">
+      <Filter>src\eepp\helper\freetype2\src\psnames</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\raster\ftraster.c">
+      <Filter>src\eepp\helper\freetype2\src\raster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\raster\ftrend1.c">
+      <Filter>src\eepp\helper\freetype2\src\raster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\raster\rastpic.c">
+      <Filter>src\eepp\helper\freetype2\src\raster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\sfnt\sfdriver.c">
+      <Filter>src\eepp\helper\freetype2\src\sfnt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\sfnt\sfntpic.c">
+      <Filter>src\eepp\helper\freetype2\src\sfnt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\sfnt\sfobjs.c">
+      <Filter>src\eepp\helper\freetype2\src\sfnt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\sfnt\ttbdf.c">
+      <Filter>src\eepp\helper\freetype2\src\sfnt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\sfnt\ttcmap.c">
+      <Filter>src\eepp\helper\freetype2\src\sfnt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\sfnt\ttkern.c">
+      <Filter>src\eepp\helper\freetype2\src\sfnt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\sfnt\ttload.c">
+      <Filter>src\eepp\helper\freetype2\src\sfnt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\sfnt\ttmtx.c">
+      <Filter>src\eepp\helper\freetype2\src\sfnt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\sfnt\ttpost.c">
+      <Filter>src\eepp\helper\freetype2\src\sfnt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\sfnt\ttsbit.c">
+      <Filter>src\eepp\helper\freetype2\src\sfnt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\smooth\ftgrays.c">
+      <Filter>src\eepp\helper\freetype2\src\smooth</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\smooth\ftsmooth.c">
+      <Filter>src\eepp\helper\freetype2\src\smooth</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\smooth\ftspic.c">
+      <Filter>src\eepp\helper\freetype2\src\smooth</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\truetype\ttdriver.c">
+      <Filter>src\eepp\helper\freetype2\src\truetype</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\truetype\ttgload.c">
+      <Filter>src\eepp\helper\freetype2\src\truetype</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\truetype\ttgxvar.c">
+      <Filter>src\eepp\helper\freetype2\src\truetype</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\truetype\ttinterp.c">
+      <Filter>src\eepp\helper\freetype2\src\truetype</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\truetype\ttobjs.c">
+      <Filter>src\eepp\helper\freetype2\src\truetype</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\truetype\ttpic.c">
+      <Filter>src\eepp\helper\freetype2\src\truetype</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\truetype\ttpload.c">
+      <Filter>src\eepp\helper\freetype2\src\truetype</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\type1\t1afm.c">
+      <Filter>src\eepp\helper\freetype2\src\type1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\type1\t1driver.c">
+      <Filter>src\eepp\helper\freetype2\src\type1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\type1\t1gload.c">
+      <Filter>src\eepp\helper\freetype2\src\type1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\type1\t1load.c">
+      <Filter>src\eepp\helper\freetype2\src\type1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\type1\t1objs.c">
+      <Filter>src\eepp\helper\freetype2\src\type1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\type1\t1parse.c">
+      <Filter>src\eepp\helper\freetype2\src\type1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\type42\t42drivr.c">
+      <Filter>src\eepp\helper\freetype2\src\type42</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\type42\t42objs.c">
+      <Filter>src\eepp\helper\freetype2\src\type42</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\type42\t42parse.c">
+      <Filter>src\eepp\helper\freetype2\src\type42</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\freetype2\src\winfonts\winfnt.c">
+      <Filter>src\eepp\helper\freetype2\src\winfonts</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

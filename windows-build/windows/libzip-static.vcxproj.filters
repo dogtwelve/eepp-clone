@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{3DCEE1AC-7433-C643-A554-AB5B9B2E4376}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp">
+      <UniqueIdentifier>{6AE42E5C-34DD-4941-9293-7BBFB9EA7A22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper">
+      <UniqueIdentifier>{FF896D5D-BFB1-9B42-87E8-F9FF89A1457A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\libzip">
+      <UniqueIdentifier>{11D9B9A9-5FF9-694C-B82E-9CA0F25AF38C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\mkstemp.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_add.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_add_dir.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_close.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_delete.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_dirent.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_entry_free.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_entry_new.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_error.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_error_clear.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_error_get.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_error_get_sys_type.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_error_strerror.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_error_to_str.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_err_str.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_fclose.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_fdopen.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_filerange_crc.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_file_error_clear.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_file_error_get.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_file_get_offset.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_file_strerror.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_fopen.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_fopen_encrypted.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_fopen_index.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_fopen_index_encrypted.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_fread.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_free.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_get_archive_comment.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_get_archive_flag.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_get_compression_implementation.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_get_encryption_implementation.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_get_file_comment.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_get_file_extra.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_get_name.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_get_num_entries.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_get_num_files.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_memdup.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_name_locate.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_new.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_open.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_rename.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_replace.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_set_archive_comment.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_set_archive_flag.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_set_default_password.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_set_file_comment.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_set_file_extra.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_set_name.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_source_buffer.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_source_close.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_source_crc.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_source_deflate.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_source_error.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_source_file.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_source_filep.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_source_free.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_source_function.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_source_layered.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_source_open.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_source_pkware.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_source_pop.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_source_read.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_source_stat.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_source_zip.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_stat.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_stat_index.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_stat_init.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_strerror.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_unchange.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_unchange_all.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_unchange_archive.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\libzip\zip_unchange_data.c">
+      <Filter>src\eepp\helper\libzip</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
