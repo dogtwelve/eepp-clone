@@ -12,11 +12,11 @@ namespace EE { namespace Network { namespace SSL {
 
 static std::vector<X509*> sCerts;
 
-bool OpenSSLSocket::MatchHostname( const char * name, const char * hostname ) {
+bool OpenSSLSocket::matchHostname( const char * name, const char * hostname ) {
 	return Tool_Curl_cert_hostcheck( name, hostname )==CURL_HOST_MATCH;
 }
 
-bool OpenSSLSocket::MatchCommonName( const char * hostname, const X509 * server_cert ) {
+bool OpenSSLSocket::matchCommonName( const char * hostname, const X509 * server_cert ) {
 	int common_name_loc = -1;
 	X509_NAME_ENTRY *common_name_entry = NULL;
 	ASN1_STRING *common_name_asn1 = NULL;
@@ -41,11 +41,11 @@ bool OpenSSLSocket::MatchCommonName( const char * hostname, const X509 * server_
 	}
 
 	// Compare expected hostname with the CN
-	return MatchHostname(common_name_str,hostname);
+	return matchHostname(common_name_str,hostname);
 }
 
 /** Tries to find a match for hostname in the certificate's Subject Alternative Name extension. */
-bool OpenSSLSocket::MatchSubjectAlternativeName( const char * hostname, const X509 * server_cert ) {
+bool OpenSSLSocket::matchSubjectAlternativeName( const char * hostname, const X509 * server_cert ) {
 	bool result = false;
 	int i;
 	int san_names_nb = -1;
@@ -74,7 +74,7 @@ bool OpenSSLSocket::MatchSubjectAlternativeName( const char * hostname, const X5
 				break;
 			}
 			else { // Compare expected hostname with the DNS name
-				if ( MatchHostname( dns_name, hostname ) ) {
+				if ( matchHostname( dns_name, hostname ) ) {
 					result = true;
 					break;
 				}
@@ -87,11 +87,11 @@ bool OpenSSLSocket::MatchSubjectAlternativeName( const char * hostname, const X5
 	return result;
 }
 
-int OpenSSLSocket::CertVerifyCb( X509_STORE_CTX * x509_ctx, void * arg ) {
+int OpenSSLSocket::certVerifyCb( X509_STORE_CTX * x509_ctx, void * arg ) {
 	/* This is the function that OpenSSL would call if we hadn't called
 	 * SSL_CTX_set_cert_verify_callback().  Therefore, we are "wrapping"
 	 * the default functionality, rather than replacing it. */
-	bool base_cert_valid = X509_verify_cert( x509_ctx );
+	bool base_cert_valid = 0 != X509_verify_cert( x509_ctx );
 
 	if ( !base_cert_valid ) {
 		eePRINTL( "Cause: %s", X509_verify_cert_error_string( X509_STORE_CTX_get_error( x509_ctx ) ) );
@@ -113,10 +113,10 @@ int OpenSSLSocket::CertVerifyCb( X509_STORE_CTX * x509_ctx, void * arg ) {
 	OpenSSLSocket * ssl = (OpenSSLSocket *)arg;
 
 	if ( ssl->mSSLSocket->mValidateHostname ) {
-		bool err = !MatchSubjectAlternativeName( ssl->mSSLSocket->mHostName.c_str(), server_cert );
+		bool err = !matchSubjectAlternativeName( ssl->mSSLSocket->mHostName.c_str(), server_cert );
 
 		if ( err ) {
-			err = !MatchCommonName( ssl->mSSLSocket->mHostName.c_str(), server_cert );
+			err = !matchCommonName( ssl->mSSLSocket->mHostName.c_str(), server_cert );
 		}
 
 		if ( err ) {
@@ -128,10 +128,14 @@ int OpenSSLSocket::CertVerifyCb( X509_STORE_CTX * x509_ctx, void * arg ) {
 	return 1;
 }
 
-bool OpenSSLSocket::Init() {
+bool OpenSSLSocket::init() {
+#if OPENSSL_VERSION_NUMBER < 0x10100000L
 	CRYPTO_malloc_init(); // Initialize malloc, free, etc for OpenSSL's use
 
-	SSL_library_init(); // Initialize OpenSSL's SSL libraries
+	SSL_library_init();
+#else
+	OPENSSL_init_ssl(0, NULL);
+#endif
 
 	SSL_load_error_strings(); // Load SSL error strings
 
@@ -140,9 +144,9 @@ bool OpenSSLSocket::Init() {
 	OpenSSL_add_all_algorithms(); // Load all available encryption algorithms
 
 	//! Load the certificates and config
-	if ( FileSystem::FileExists( SSLSocket::CertificatesPath ) ) {
+	if ( FileSystem::fileExists( SSLSocket::CertificatesPath ) ) {
 		SafeDataPointer data;
-		FileSystem::FileGet( SSLSocket::CertificatesPath, data );
+		FileSystem::fileGet( SSLSocket::CertificatesPath, data );
 
 		if ( data.DataSize > 0 ) {
 			BIO* mem = BIO_new(BIO_s_mem());
@@ -161,13 +165,13 @@ bool OpenSSLSocket::Init() {
 			BIO_free(mem);
 		}
 
-		eePRINTL( "Loaded certs from '%s': %d", SSLSocket::CertificatesPath.c_str(), (int)sCerts.size() );
+		//eePRINTL( "Loaded certs from '%s': %d", SSLSocket::CertificatesPath.c_str(), (int)sCerts.size() );
 	}
 
 	return true;
 }
 
-bool OpenSSLSocket::End() {
+bool OpenSSLSocket::end() {
 	if ( !sCerts.empty() ) {
 		for( size_t i = 0; i < sCerts.size(); i++ ) {
 			X509_free(sCerts[i]);
@@ -192,12 +196,12 @@ OpenSSLSocket::OpenSSLSocket( SSLSocket * socket ) :
 }
 
 OpenSSLSocket::~OpenSSLSocket() {
-	Disconnect();
+	disconnect();
 }
 
-Socket::Status OpenSSLSocket::Connect( const IpAddress& remoteAddress, unsigned short remotePort, Time timeout ) {
+Socket::Status OpenSSLSocket::connect( const IpAddress& remoteAddress, unsigned short remotePort, Time timeout ) {
 	if ( mConnected ) {
-		Disconnect();
+		disconnect();
 	}
 
 	// Set up a SSL_CTX object, which will tell our BIO object how to do its work
@@ -236,7 +240,7 @@ Socket::Status OpenSSLSocket::Connect( const IpAddress& remoteAddress, unsigned 
 		 * OpenSSL's built-in routine which would have been called if
 		 * we hadn't set the callback.  Therefore, we're just
 		 * "wrapping" OpenSSL's routine, not replacing it. */
-		SSL_CTX_set_cert_verify_callback ( mCTX, CertVerifyCb, this );
+		SSL_CTX_set_cert_verify_callback ( mCTX, certVerifyCb, this );
 
 		//Let the verify_callback catch the verify_depth error so that we get an appropriate error in the logfile. (??)
 		SSL_CTX_set_verify_depth( mCTX, mMaxCertChainDepth + 1 );
@@ -254,12 +258,10 @@ Socket::Status OpenSSLSocket::Connect( const IpAddress& remoteAddress, unsigned 
 	// Same as before, try to connect.
 	int result	= SSL_connect( mSSL );
 
-	eePRINTL( "CONNECTION RESULT: %d", result );
-
 	if ( result < 1 ) {
 		ERR_print_errors_fp(stdout);
 
-		_print_error(result);
+		printError(result);
 
 		mStatus	= Socket::Error;
 
@@ -269,10 +271,7 @@ Socket::Status OpenSSLSocket::Connect( const IpAddress& remoteAddress, unsigned 
 	X509 * peer = SSL_get_peer_certificate( mSSL );
 
 	if ( peer ) {
-		bool cert_ok = SSL_get_verify_result(mSSL) == X509_V_OK;
-
-		eePRINTL( "cert_ok: %d", (int)cert_ok );
-
+		//eePRINTL( "cert_ok: %d", (int)( SSL_get_verify_result(mSSL) == X509_V_OK ) );
 		mStatus	= Socket::Done;
 	} else if ( mSSLSocket->mValidateCertificate ) {
 		mStatus	= Socket::Error;
@@ -285,7 +284,7 @@ Socket::Status OpenSSLSocket::Connect( const IpAddress& remoteAddress, unsigned 
 	return mStatus;
 }
 
-void OpenSSLSocket::Disconnect() {
+void OpenSSLSocket::disconnect() {
 	if (!mConnected)
 		return;
 
@@ -299,7 +298,7 @@ void OpenSSLSocket::Disconnect() {
 	mStatus		= Socket::Disconnected;
 }
 
-void OpenSSLSocket::_print_error(int err) {
+void OpenSSLSocket::printError(int err) {
 	err = SSL_get_error(mSSL,err);
 
 	switch(err) {
@@ -320,16 +319,16 @@ void OpenSSLSocket::_print_error(int err) {
 	}
 }
 
-Socket::Status OpenSSLSocket::Send( const void * data, std::size_t size ) {
+Socket::Status OpenSSLSocket::send( const void * data, std::size_t size ) {
 	Uint8 * buf = (Uint8*)data;
 
 	while( size > 0 ) {
 		int ret = SSL_write( mSSL, buf, size );
 
 		if ( ret <= 0 ) {
-			_print_error(ret);
+			printError(ret);
 
-			Disconnect();
+			disconnect();
 
 			return Socket::Disconnected;
 		}
@@ -341,7 +340,7 @@ Socket::Status OpenSSLSocket::Send( const void * data, std::size_t size ) {
 	return Socket::Done;
 }
 
-Socket::Status OpenSSLSocket::Receive( void * data, std::size_t size, std::size_t& received ) {
+Socket::Status OpenSSLSocket::receive( void * data, std::size_t size, std::size_t& received ) {
 	if ( size==0 ) {
 		received = 0;
 		return Socket::Done;
@@ -355,9 +354,9 @@ Socket::Status OpenSSLSocket::Receive( void * data, std::size_t size, std::size_
 		int ret = SSL_read( mSSL, buf, size );
 
 		if ( ret < 0 ) {
-			_print_error(ret);
+			printError(ret);
 
-			Disconnect();
+			disconnect();
 
 			return Socket::Disconnected;
 		} else if ( 0 == ret ) {

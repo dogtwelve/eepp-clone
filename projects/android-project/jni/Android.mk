@@ -21,7 +21,7 @@ MY_C_FLAGS				:= \
 	-DANDROID \
 	-DANDROID_NDK \
 	-DDISABLE_IMPORTGL \
-	-Wall \
+	-w \
 	-Wno-unknown-pragmas \
 	$(EE_GLES_VERSION) \
 	-DEE_NO_SNDFILE \
@@ -50,6 +50,7 @@ CODE_SRCS				:=  \
 	helper/jpeg-compressor/*.cpp \
 	helper/imageresampler/*.cpp \
 	helper/haikuttf/*.cpp \
+	helper/pugixml/*.cpp \
 	system/*.cpp \
 	system/platform/posix/*.cpp \
 	network/*.cpp \
@@ -68,8 +69,8 @@ CODE_SRCS				:=  \
 	physics/constraints/*.cpp \
 	ui/*.cpp \
 	ui/tools/*.cpp \
-	gaming/*.cpp \
-	gaming/mapeditor/*.cpp
+	maps/*.cpp \
+	maps/mapeditor/*.cpp
 
 LOCAL_C_INCLUDES		:= $(MY_C_INCLUDES)
 
@@ -112,12 +113,25 @@ LOCAL_PATH				:= $(MY_PATH)/helper/freetype2
 
 LOCAL_MODULE			:= freetype
 
-APP_SUBDIRS				:= $(patsubst $(LOCAL_PATH)/%, %, $(shell find $(LOCAL_PATH)/src -type d))
+# APP_SUBDIRS := $(patsubst $(LOCAL_PATH)/%, %, $(shell find $(LOCAL_PATH)/src -type d))
 
-LOCAL_C_INCLUDES		:= $(foreach D, $(APP_SUBDIRS), $(LOCAL_PATH)/$(D)) $(LOCAL_PATH)/include
-LOCAL_CFLAGS			:= -Os -DFT2_BUILD_LIBRARY
+# LOCAL_C_INCLUDES := $(foreach D, $(APP_SUBDIRS), $(LOCAL_PATH)/$(D)) $(LOCAL_PATH)/include
+# LOCAL_CFLAGS := -Os -DFT2_BUILD_LIBRARY
 
-LOCAL_SRC_FILES			+= $(foreach F, $(APP_SUBDIRS), $(addprefix $(F)/,$(notdir $(wildcard $(LOCAL_PATH)/$(F)/*.c))))
+# LOCAL_SRC_FILES += $(foreach F, $(APP_SUBDIRS), $(addprefix $(F)/,$(notdir $(wildcard $(LOCAL_PATH)/$(F)/*.c))))
+
+# walk through dir and subdir
+define walk
+$(wildcard $(1)) $(foreach e, $(wildcard $(1)/*), $(call walk, $(e)))
+endef
+
+ALLFILES = $(call walk, $(LOCAL_PATH)/src)
+FILE_LIST += $(filter %.c, $(ALLFILES))
+
+LOCAL_C_INCLUDES :=  $(LOCAL_PATH)/include
+LOCAL_CFLAGS := -Os -DFT2_BUILD_LIBRARY
+
+LOCAL_SRC_FILES := $(FILE_LIST:$(LOCAL_PATH)/%=%)
 
 include $(BUILD_STATIC_LIBRARY)
 #*************** FREETYPE ***************

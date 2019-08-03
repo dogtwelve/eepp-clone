@@ -12,21 +12,19 @@ class EE_API VertexBufferOGL : public VertexBuffer {
 	public:
 		VertexBufferOGL( const Uint32& VertexFlags = VERTEX_FLAGS_DEFAULT, EE_DRAW_MODE DrawType = DM_QUADS, const Int32& ReserveVertexSize = 0, const Int32& ReserveIndexSize = 0, EE_VBO_USAGE_TYPE UsageType = VBO_USAGE_TYPE_STATIC );
 
-		virtual ~VertexBufferOGL();
+		void bind();
 
-		void Bind();
+		void draw();
 
-		void Draw();
+		bool compile();
 
-		bool Compile();
+		void update( const Uint32& Types, bool Indices );
 
-		void Update( const Uint32& Types, bool Indices );
+		void reload();
 
-		void Reload();
-
-		void Unbind();
+		void unbind();
 	protected:
-		void SetVertexStates();
+		void setVertexStates();
 
 };
 

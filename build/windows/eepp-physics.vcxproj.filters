@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{38D0B1D4-253F-7E46-B8C4-32EE8B376601}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\examples">
+      <UniqueIdentifier>{A950C153-2F37-2C41-8B40-DC74C774DBBC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\examples\physics">
+      <UniqueIdentifier>{78873918-8127-3649-BB81-00643E201DCD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\examples\physics\physics.cpp">
+      <Filter>src\examples\physics</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -13,28 +13,36 @@ class EE_API FrameBufferFBO : public FrameBuffer {
 
 		~FrameBufferFBO();
 
-		FrameBufferFBO( const Uint32& Width, const Uint32& Height, bool DepthBuffer = false, EE::Window::Window * window = NULL );
+		FrameBufferFBO( const Uint32& Width, const Uint32& Height, bool StencilBuffer = true, bool DepthBuffer = false, const Uint32& channels = 4, EE::Window::Window * window = NULL );
 
-		void Bind();
+		void bind();
 
-		void Unbind();
+		void unbind();
 
-		void Reload();
+		void reload();
 
-		static bool IsSupported();
+		void resize( const Uint32& Width, const Uint32& Height );
+
+		const Int32& getFrameBufferId() const;
+
+		static bool isSupported();
 	protected:
 		Int32 		mFrameBuffer;
 		Uint32 		mDepthBuffer;
+		Uint32		mStencilBuffer;
 		Int32		mLastFB;
-		Int32		mLastRB;
+		Int32		mLastDB;
+		Int32		mLastSB;
 
-		bool Create( const Uint32& Width, const Uint32& Height );
+		bool create( const Uint32& Width, const Uint32& Height );
 
-		bool Create( const Uint32& Width, const Uint32& Height, bool DepthBuffer );
+		bool create( const Uint32& Width, const Uint32& Height, bool StencilBuffer, bool DepthBuffer, const Uint32& channels );
 
-		void BindFrameBuffer();
+		void bindFrameBuffer();
 
-		void BindRenderBuffer();
+		void bindDepthBuffer();
+
+		void bindStencilBuffer();
 };
 
 }}

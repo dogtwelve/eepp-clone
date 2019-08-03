@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{F417F0C4-3B80-994B-B652-C02757C839F3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp">
+      <UniqueIdentifier>{B35E3DB2-7847-6540-8E9B-899BAABAD553}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper">
+      <UniqueIdentifier>{EB58C570-F8AB-3A46-B672-ABF6039E2A08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\chipmunk">
+      <UniqueIdentifier>{61AB27B3-6082-7A4A-85A2-82AC8119CAE3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\chipmunk\constraints">
+      <UniqueIdentifier>{FBABF20B-88BE-A742-9BC9-FFD329C0EED0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\chipmunk.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\cpArbiter.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\cpArray.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\cpBB.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\cpBBTree.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\cpBody.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\cpCollision.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\cpHashSet.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\cpPolyShape.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\cpShape.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\cpSpace.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\cpSpaceComponent.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\cpSpaceHash.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\cpSpaceQuery.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\cpSpaceStep.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\cpSpatialIndex.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\cpSweep1D.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\cpVect.c">
+      <Filter>src\eepp\helper\chipmunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\constraints\cpConstraint.c">
+      <Filter>src\eepp\helper\chipmunk\constraints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\constraints\cpDampedRotarySpring.c">
+      <Filter>src\eepp\helper\chipmunk\constraints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\constraints\cpDampedSpring.c">
+      <Filter>src\eepp\helper\chipmunk\constraints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\constraints\cpGearJoint.c">
+      <Filter>src\eepp\helper\chipmunk\constraints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\constraints\cpGrooveJoint.c">
+      <Filter>src\eepp\helper\chipmunk\constraints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\constraints\cpPinJoint.c">
+      <Filter>src\eepp\helper\chipmunk\constraints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\constraints\cpPivotJoint.c">
+      <Filter>src\eepp\helper\chipmunk\constraints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\constraints\cpRatchetJoint.c">
+      <Filter>src\eepp\helper\chipmunk\constraints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\constraints\cpRotaryLimitJoint.c">
+      <Filter>src\eepp\helper\chipmunk\constraints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\constraints\cpSimpleMotor.c">
+      <Filter>src\eepp\helper\chipmunk\constraints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\eepp\helper\chipmunk\constraints\cpSlideJoint.c">
+      <Filter>src\eepp\helper\chipmunk\constraints</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -10,13 +10,12 @@
 #include <eepp/window/backend/SDL2/inputsdl2.hpp>
 #include <eepp/window/backend/SDL2/cursormanagersdl2.hpp>
 #include <eepp/window/backend/SDL2/wminfo.hpp>
-
 #include <eepp/graphics/globalbatchrenderer.hpp>
 #include <eepp/graphics/shaderprogrammanager.hpp>
 #include <eepp/graphics/vertexbuffermanager.hpp>
 #include <eepp/graphics/framebuffermanager.hpp>
 #include <eepp/graphics/texturefactory.hpp>
-#include <eepp/graphics/renderer/gl.hpp>
+#include <eepp/graphics/renderer/renderer.hpp>
 
 #if EE_PLATFORM == EE_PLATFORM_ANDROID
 #include <eepp/system/zip.hpp>
@@ -65,14 +64,17 @@ WindowSDL::WindowSDL( WindowSettings Settings, ContextSettings Context ) :
 	Window( Settings, Context, eeNew( ClipboardSDL, ( this ) ), eeNew( InputSDL, ( this ) ), eeNew( CursorManagerSDL, ( this ) ) ),
 	mSDLWindow( NULL ),
 	mGLContext( NULL ),
-	mGLContextThread( NULL ),
+	mGLContextThread( NULL )
+#ifdef EE_USE_WMINFO
+	,
 	mWMinfo( NULL )
+#endif
 #if EE_PLATFORM == EE_PLATFORM_ANDROID
 	,
 	mZip( eeNew( Zip, () ) )
 #endif
 {
-	Create( Settings, Context );
+	create( Settings, Context );
 }
 
 WindowSDL::~WindowSDL() {
@@ -97,7 +99,7 @@ WindowSDL::~WindowSDL() {
 #endif
 }
 
-bool WindowSDL::Create( WindowSettings Settings, ContextSettings Context ) {
+bool WindowSDL::create( WindowSettings Settings, ContextSettings Context ) {
 	if ( mWindow.Created )
 		return false;
 
@@ -107,7 +109,7 @@ bool WindowSDL::Create( WindowSettings Settings, ContextSettings Context ) {
 	if ( SDL_Init( SDL_INIT_VIDEO ) != 0 ) {
 		eePRINTL( "Unable to initialize SDL: %s", SDL_GetError() );
 
-		LogFailureInit( "WindowSDL", GetVersion() );
+		logFailureInit( "WindowSDL", getVersion() );
 
 		return false;
 	}
@@ -122,21 +124,27 @@ bool WindowSDL::Create( WindowSettings Settings, ContextSettings Context ) {
 	#endif
 
 	if ( mWindow.WindowConfig.Style & WindowStyle::UseDesktopResolution ) {
-		mWindow.WindowConfig.Width	= mWindow.DesktopResolution.Width();
-		mWindow.WindowConfig.Height	= mWindow.DesktopResolution.Height();
+		mWindow.WindowConfig.Width	= mWindow.DesktopResolution.getWidth();
+		mWindow.WindowConfig.Height	= mWindow.DesktopResolution.getHeight();
 	}
 
 	mWindow.Flags = SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN;
+
+	#if EE_PLATFORM != EE_PLATFORM_EMSCRIPTEN
+	#if SDL_VERSION_ATLEAST(2,0,1)
+	mWindow.Flags |= SDL_WINDOW_ALLOW_HIGHDPI;
+	#endif
+	#endif
 
 	if ( mWindow.WindowConfig.Style & WindowStyle::Resize ) {
 		mWindow.Flags |= SDL_WINDOW_RESIZABLE;
 	}
 
-	if ( mWindow.WindowConfig.Style & WindowStyle::NoBorder ) {
+	if ( mWindow.WindowConfig.Style & WindowStyle::Borderless ) {
 		mWindow.Flags |= SDL_WINDOW_BORDERLESS;
 	}
 
-	SetGLConfig();
+	setGLConfig();
 
 	Uint32 mTmpFlags = mWindow.Flags;
 
@@ -144,23 +152,30 @@ bool WindowSDL::Create( WindowSettings Settings, ContextSettings Context ) {
 		mTmpFlags |= SDL_WINDOW_FULLSCREEN;
 	}
 
+	if ( mWindow.ContextConfig.Multisamples > 0 ) {
+		SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+		SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, mWindow.ContextConfig.Multisamples);
+	}
+
 	mSDLWindow = SDL_CreateWindow( mWindow.WindowConfig.Caption.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, mWindow.WindowConfig.Width, mWindow.WindowConfig.Height, mTmpFlags );
 
 	if ( NULL == mSDLWindow ) {
 		eePRINTL( "Unable to create window: %s", SDL_GetError() );
 
-		LogFailureInit( "WindowSDL", GetVersion() );
+		logFailureInit( "WindowSDL", getVersion() );
 
 		return false;
 	}
 
 	/// In some platforms it will not create the desired window size, so we query the real window size created
+	#if SDL_VERSION_ATLEAST(2,0,1)
 	int w, h;
-	SDL_GetWindowSize( mSDLWindow, &w, &h );
+	SDL_GL_GetDrawableSize( mSDLWindow, &w, &h );
 
 	mWindow.WindowConfig.Width	= w;
 	mWindow.WindowConfig.Height	= h;
 	mWindow.WindowSize			= Sizei( mWindow.WindowConfig.Width, mWindow.WindowConfig.Height );
+	#endif
 
 	#if EE_PLATFORM == EE_PLATFORM_ANDROID || EE_PLATFORM == EE_PLATFORM_IOS
 		eePRINTL( "Choosing GL Version from: %d", Context.Version );
@@ -181,7 +196,7 @@ bool WindowSDL::Create( WindowSettings Settings, ContextSettings Context ) {
 				SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
 			}
 		} else {
-			#if defined( EE_GLES2 ) && !defined( EE_GLES1 )
+			#if defined( EE_GLES2 )
 				eePRINTL( "Starting GLES2 default" );
 
 				SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
@@ -194,11 +209,13 @@ bool WindowSDL::Create( WindowSettings Settings, ContextSettings Context ) {
 			#endif
 		}
 	#else
+		#if SDL_VERSION_ATLEAST(2,0,0)
 		if ( GLv_3CP == Context.Version ) {
 			SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 			SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 			SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 		}
+		#endif
 	#endif
 
 	#ifdef SDL2_THREADED_GLCONTEXT
@@ -218,7 +235,7 @@ bool WindowSDL::Create( WindowSettings Settings, ContextSettings Context ) {
 	{
 		eePRINTL( "Unable to create context: %s", SDL_GetError() );
 
-		LogFailureInit( "WindowSDL", GetVersion() );
+		logFailureInit( "WindowSDL", getVersion() );
 
 		return false;
 	}
@@ -227,54 +244,54 @@ bool WindowSDL::Create( WindowSettings Settings, ContextSettings Context ) {
 
 	SDL_GL_MakeCurrent( mSDLWindow, mGLContext );
 
-	if ( NULL == cGL::ExistsSingleton() ) {
-		cGL::CreateSingleton( mWindow.ContextConfig.Version );
-		cGL::instance()->Init();
+	if ( NULL == Renderer::existsSingleton() ) {
+		Renderer::createSingleton( mWindow.ContextConfig.Version );
+		Renderer::instance()->init();
 	}
 
-	CreatePlatform();
+	createPlatform();
 
-	GetMainContext();
+	getMainContext();
 
-	Caption( mWindow.WindowConfig.Caption );
+	setCaption( mWindow.WindowConfig.Caption );
 
-	CreateView();
+	createView();
 
-	Setup2D();
+	setup2D();
 
 	mWindow.Created = true;
 
 	if ( "" != mWindow.WindowConfig.Icon ) {
-		Icon( mWindow.WindowConfig.Icon );
+		setIcon( mWindow.WindowConfig.Icon );
 	}
 
 	/// Init the clipboard after the window creation
-	reinterpret_cast<ClipboardSDL*> ( mClipboard )->Init();
+	reinterpret_cast<ClipboardSDL*> ( mClipboard )->init();
 
 	/// Init the input after the window creation
-	reinterpret_cast<InputSDL*> ( mInput )->Init();
+	reinterpret_cast<InputSDL*> ( mInput )->init();
 
-	mCursorManager->Set( SYS_CURSOR_ARROW );
+	mCursorManager->set( SYS_CURSOR_ARROW );
 
 	#if EE_PLATFORM == EE_PLATFORM_ANDROID
 	std::string apkPath( SDL_AndroidGetApkPath() );
 
 	eePRINTL( "Opening application APK in: %s", apkPath.c_str() );
 
-	if ( mZip->Open( apkPath ) )
+	if ( mZip->open( apkPath ) )
 		eePRINTL( "APK opened succesfully!" );
 	else
 		eePRINTL( "Failed to open APK!" );
 
-	LogSuccessfulInit( GetVersion(), apkPath );
+	logSuccessfulInit( getVersion(), apkPath );
 	#else
-	LogSuccessfulInit( GetVersion() );
+	logSuccessfulInit( getVersion() );
 	#endif
 
 	return true;
 }
 
-bool WindowSDL::IsThreadedGLContext() {
+bool WindowSDL::isThreadedGLContext() {
 #ifdef SDL2_THREADED_GLCONTEXT
 	return true;
 #else
@@ -282,23 +299,23 @@ bool WindowSDL::IsThreadedGLContext() {
 #endif
 }
 
-void WindowSDL::SetGLContextThread() {
+void WindowSDL::setGLContextThread() {
 	SDL_GL_MakeCurrent( mSDLWindow, mGLContextThread );
 }
 
-void WindowSDL::UnsetGLContextThread() {
+void WindowSDL::unsetGLContextThread() {
 	SDL_GL_MakeCurrent( mSDLWindow, NULL );
 }
 
-std::string WindowSDL::GetVersion() {
+std::string WindowSDL::getVersion() {
 	SDL_version ver;
 
 	SDL_GetVersion( &ver );
 
-	return String::StrFormated( "SDL %d.%d.%d", ver.major, ver.minor, ver.patch );
+	return String::strFormated( "SDL %d.%d.%d", ver.major, ver.minor, ver.patch );
 }
 
-void WindowSDL::CreatePlatform() {
+void WindowSDL::createPlatform() {
 	eeSAFE_DELETE( mPlatform );
 
 #ifdef EE_USE_WMINFO
@@ -306,17 +323,17 @@ void WindowSDL::CreatePlatform() {
 #endif
 
 #if defined( EE_X11_PLATFORM )
-	mPlatform = eeNew( Platform::X11Impl, ( this, mWMinfo->GetWindowHandler(), mWMinfo->GetWindow(), mWMinfo->GetWindow(), NULL, NULL ) );
+	mPlatform = eeNew( Platform::X11Impl, ( this, mWMinfo->getWindowHandler(), mWMinfo->getWindow(), mWMinfo->getWindow(), NULL, NULL ) );
 #elif EE_PLATFORM == EE_PLATFORM_WIN
-	mPlatform = eeNew( Platform::WinImpl, ( this, GetWindowHandler() ) );
+	mPlatform = eeNew( Platform::WinImpl, ( this, getWindowHandler() ) );
 #elif EE_PLATFORM == EE_PLATFORM_MACOSX
 	mPlatform = eeNew( Platform::OSXImpl, ( this ) );
 #else
-	Window::CreatePlatform();
+	Window::createPlatform();
 #endif
 }
 
-void WindowSDL::SetGLConfig() {
+void WindowSDL::setGLConfig() {
 	if ( mWindow.ContextConfig.DepthBufferSize ) SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE	, mWindow.ContextConfig.DepthBufferSize );				// Depth
 	SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, ( mWindow.ContextConfig.DoubleBuffering ? 1 : 0 ) );	// Double Buffering
 	if ( mWindow.ContextConfig.StencilBufferSize ) SDL_GL_SetAttribute( SDL_GL_STENCIL_SIZE, mWindow.ContextConfig.StencilBufferSize );
@@ -334,29 +351,29 @@ void WindowSDL::SetGLConfig() {
 	}
 }
 
-void WindowSDL::ToggleFullscreen() {
+void WindowSDL::toggleFullscreen() {
 	bool WasMaximized = mWindow.Maximized;
 
-	if ( Windowed() ) {
-		Size( mWindow.WindowConfig.Width, mWindow.WindowConfig.Height, !Windowed() );
+	if ( isWindowed() ) {
+		setSize( mWindow.WindowConfig.Width, mWindow.WindowConfig.Height, !isWindowed() );
 	} else {
-		Size( mWindow.WindowSize.Width(), mWindow.WindowSize.Height(), !Windowed() );
+		setSize( mWindow.WindowSize.getWidth(), mWindow.WindowSize.getHeight(), !isWindowed() );
 	}
 
 	if ( WasMaximized ) {
-		Maximize();
+		maximize();
 	}
 
-	GetCursorManager()->Reload();
+	getCursorManager()->reload();
 }
 
-void WindowSDL::Caption( const std::string& Caption ) {
+void WindowSDL::setCaption( const std::string& Caption ) {
 	mWindow.WindowConfig.Caption = Caption;
 
 	SDL_SetWindowTitle( mSDLWindow, Caption.c_str() );
 }
 
-bool WindowSDL::Active() {
+bool WindowSDL::isActive() {
 	Uint32 flags = 0;
 
 	flags = SDL_GetWindowFlags( mSDLWindow );
@@ -364,7 +381,7 @@ bool WindowSDL::Active() {
 	return 0 != ( ( flags & SDL_WINDOW_INPUT_FOCUS ) && ( flags & SDL_WINDOW_MOUSE_FOCUS ) );
 }
 
-bool WindowSDL::Visible() {
+bool WindowSDL::isVisible() {
 	Uint32 flags = 0;
 
 	flags = SDL_GetWindowFlags( mSDLWindow );
@@ -372,16 +389,16 @@ bool WindowSDL::Visible() {
 	return 0 != ( ( flags & SDL_WINDOW_SHOWN ) && !( flags & SDL_WINDOW_MINIMIZED ) );
 }
 
-void WindowSDL::Size( Uint32 Width, Uint32 Height, bool Windowed ) {
+void WindowSDL::setSize( Uint32 Width, Uint32 Height, bool Windowed ) {
 	if ( ( !Width || !Height ) ) {
-		Width	= mWindow.DesktopResolution.Width();
-		Height	= mWindow.DesktopResolution.Height();
+		Width	= mWindow.DesktopResolution.getWidth();
+		Height	= mWindow.DesktopResolution.getHeight();
 	}
 
-	if ( this->Windowed() == Windowed && Width == mWindow.WindowConfig.Width && Height == mWindow.WindowConfig.Height )
+	if ( this->isWindowed() == Windowed && Width == mWindow.WindowConfig.Width && Height == mWindow.WindowConfig.Height )
 		return;
 
-	eePRINTL( "Switching from %s to %s. Width: %d Height %d.", this->Windowed() ? "windowed" : "fullscreen", Windowed ? "windowed" : "fullscreen", Width, Height );
+	eePRINTL( "Switching from %s to %s. Width: %d Height %d.", this->isWindowed() ? "windowed" : "fullscreen", Windowed ? "windowed" : "fullscreen", Width, Height );
 
 	Uint32 oldWidth		= mWindow.WindowConfig.Width;
 	Uint32 oldHeight	= mWindow.WindowConfig.Height;
@@ -395,46 +412,50 @@ void WindowSDL::Size( Uint32 Width, Uint32 Height, bool Windowed ) {
 		mWindow.WindowSize = Sizei( oldWidth, oldHeight );
 	}
 
-	if ( this->Windowed() && !Windowed ) {
-		mWinPos = Position();
+	if ( this->isWindowed() && !Windowed ) {
+		mWinPos = getPosition();
 	} else {
+		#if SDL_VERSION_ATLEAST(2,0,0)
 		SDL_SetWindowFullscreen( mSDLWindow, Windowed ? 0 : SDL_WINDOW_FULLSCREEN );
+		#endif
 	}
 
 	SDL_SetWindowSize( mSDLWindow, Width, Height );
 
-	if ( this->Windowed() && !Windowed ) {
-		mWinPos = Position();
+	if ( this->isWindowed() && !Windowed ) {
+		mWinPos = getPosition();
 
-		SetGLConfig();
+		setGLConfig();
 
+		#if SDL_VERSION_ATLEAST(2,0,0)
 		SDL_SetWindowFullscreen( mSDLWindow, Windowed ? 0 : SDL_WINDOW_FULLSCREEN );
+		#endif
 	}
 
-	if ( !this->Windowed() && Windowed ) {
-		Position( mWinPos.x, mWinPos.y );
+	if ( !this->isWindowed() && Windowed ) {
+		setPosition( mWinPos.x, mWinPos.y );
 	}
 
-	BitOp::SetBitFlagValue( &mWindow.WindowConfig.Style, WindowStyle::Fullscreen, !Windowed );
+	BitOp::setBitFlagValue( &mWindow.WindowConfig.Style, WindowStyle::Fullscreen, !Windowed );
 
-	mDefaultView.SetView( 0, 0, Width, Height );
+	mDefaultView.setView( 0, 0, Width, Height );
 
-	Setup2D();
+	setup2D();
 
 	SDL_PumpEvents();
 
 	SDL_FlushEvent( SDL_WINDOWEVENT );
 
-	mCursorManager->Reload();
+	mCursorManager->reload();
 
-	SendVideoResizeCb();
+	sendVideoResizeCb();
 }
 
-void WindowSDL::SwapBuffers() {	
+void WindowSDL::swapBuffers() {	
 	SDL_GL_SwapWindow( mSDLWindow );
 }
 
-std::vector<DisplayMode> WindowSDL::GetDisplayModes() const {
+std::vector<DisplayMode> WindowSDL::getDisplayModes() const {
 	std::vector<DisplayMode> result;
 
 	int displays = SDL_GetNumVideoDisplays();
@@ -453,7 +474,7 @@ std::vector<DisplayMode> WindowSDL::GetDisplayModes() const {
 	return result;
 }
 
-void WindowSDL::SetGamma( Float Red, Float Green, Float Blue ) {
+void WindowSDL::setGamma( Float Red, Float Green, Float Blue ) {
 	eeclamp( &Red	, (Float)0.1f, (Float)10.0f );
 	eeclamp( &Green	, (Float)0.1f, (Float)10.0f );
 	eeclamp( &Blue	, (Float)0.1f, (Float)10.0f );
@@ -481,15 +502,16 @@ void WindowSDL::SetGamma( Float Red, Float Green, Float Blue ) {
 	SDL_SetWindowGammaRamp( mSDLWindow, red_ramp, green_ramp, blue_ramp );
 }
 
-eeWindowHandle	WindowSDL::GetWindowHandler() {
+eeWindowHandle	WindowSDL::getWindowHandler() {
+#ifdef EE_USE_WMINFO
 	if ( NULL != mWMinfo ) {
-		return mWMinfo->GetWindowHandler();
+		return mWMinfo->getWindowHandler();
 	}
-
+#endif
 	return 0;
 }
 
-bool WindowSDL::Icon( const std::string& Path ) {
+bool WindowSDL::setIcon( const std::string& Path ) {
 	int x, y, c;
 
 	if ( !mWindow.Created ) {
@@ -504,11 +526,11 @@ bool WindowSDL::Icon( const std::string& Path ) {
 
 	Image Img( Path );
 
-	if ( NULL != Img.GetPixelsPtr() ) {
-		const Uint8 * Ptr = Img.GetPixelsPtr();
-		x = Img.Width();
-		y = Img.Height();
-		c = Img.Channels();
+	if ( NULL != Img.getPixelsPtr() ) {
+		const Uint8 * Ptr = Img.getPixelsPtr();
+		x = Img.getWidth();
+		y = Img.getHeight();
+		c = Img.getChannels();
 
 		if ( ( x  % 8 ) == 0 && ( y % 8 ) == 0 ) {
 			Uint32 rmask, gmask, bmask, amask;
@@ -546,31 +568,31 @@ bool WindowSDL::Icon( const std::string& Path ) {
 	return false;
 }
 
-void WindowSDL::Minimize() {
+void WindowSDL::minimize() {
 	SDL_MinimizeWindow( mSDLWindow );
 }
 
-void WindowSDL::Maximize() {
+void WindowSDL::maximize() {
 	SDL_MaximizeWindow( mSDLWindow );
 }
 
-void WindowSDL::Hide() {
+void WindowSDL::hide() {
 	SDL_HideWindow( mSDLWindow );
 }
 
-void WindowSDL::Raise() {
+void WindowSDL::raise() {
 	SDL_RaiseWindow( mSDLWindow );
 }
 
-void WindowSDL::Show() {
+void WindowSDL::show() {
 	SDL_ShowWindow( mSDLWindow );
 }
 
-void WindowSDL::Position( Int16 Left, Int16 Top ) {
+void WindowSDL::setPosition( Int16 Left, Int16 Top ) {
 	SDL_SetWindowPosition( mSDLWindow, Left, Top );
 }
 
-Vector2i WindowSDL::Position() {
+Vector2i WindowSDL::getPosition() {
 	Vector2i p;
 
 	SDL_GetWindowPosition( mSDLWindow, &p.x, &p.y );
@@ -578,41 +600,47 @@ Vector2i WindowSDL::Position() {
 	return p;
 }
 
-void WindowSDL::UpdateDesktopResolution() {
+void WindowSDL::updateDesktopResolution() {
+#if SDL_VERSION_ATLEAST(2,0,0)
 	SDL_DisplayMode dpm;
 	SDL_GetDesktopDisplayMode( SDL_GetWindowDisplayIndex( mSDLWindow ), &dpm );
 
 	mWindow.DesktopResolution = Sizei( dpm.w, dpm.h );
+#endif
 }
 
-const Sizei& WindowSDL::GetDesktopResolution() {
-	UpdateDesktopResolution();
-	return Window::GetDesktopResolution();
+const Sizei& WindowSDL::getDesktopResolution() {
+	updateDesktopResolution();
+	return Window::getDesktopResolution();
 }
 
 SDL_Window * WindowSDL::GetSDLWindow() const {
 	return mSDLWindow;
 }
 
-void WindowSDL::StartTextInput() {
+void WindowSDL::startTextInput() {
 	SDL_StartTextInput();
 }
 
-bool WindowSDL::IsTextInputActive() {
+bool WindowSDL::isTextInputActive() {
+#if SDL_VERSION_ATLEAST(2,0,0)
 	return SDL_TRUE == SDL_IsTextInputActive();
+#else
+	return false;
+#endif
 }
 
-void WindowSDL::StopTextInput() {
+void WindowSDL::stopTextInput() {
 	SDL_StopTextInput();
 }
 
-void WindowSDL::SetTextInputRect( Recti& rect ) {
+void WindowSDL::setTextInputRect( Rect& rect ) {
 	SDL_Rect r;
 
 	r.x = rect.Left;
 	r.y = rect.Top;
-	r.w = rect.Size().Width();
-	r.h = rect.Size().Height();
+	r.w = rect.getSize().getWidth();
+	r.h = rect.getSize().getHeight();
 
 	SDL_SetTextInputRect( &r );
 
@@ -622,36 +650,44 @@ void WindowSDL::SetTextInputRect( Recti& rect ) {
 	rect.Bottom	= rect.Top + r.h;
 }
 
-bool WindowSDL::HasScreenKeyboardSupport() {
+bool WindowSDL::hasScreenKeyboardSupport() {
+#if SDL_VERSION_ATLEAST(2,0,0)
 	return SDL_TRUE == SDL_HasScreenKeyboardSupport();
+#else
+	return false;
+#endif
 }
 
-bool WindowSDL::IsScreenKeyboardShown() {
+bool WindowSDL::isScreenKeyboardShown() {
+#if SDL_VERSION_ATLEAST(2,0,0)
 	return SDL_TRUE == SDL_IsScreenKeyboardShown( mSDLWindow );
+#else
+	return false;
+#endif
 }
 
 #if EE_PLATFORM == EE_PLATFORM_ANDROID
-void * WindowSDL::GetJNIEnv() {
+void * WindowSDL::getJNIEnv() {
 	return SDL_AndroidGetJNIEnv();
 }
 
-void * WindowSDL::GetActivity() {
+void * WindowSDL::getActivity() {
 	return SDL_AndroidGetActivity();
 }
 
-int WindowSDL::GetExternalStorageState() {
+int WindowSDL::getExternalStorageState() {
 	return SDL_AndroidGetExternalStorageState();
 }
 
-std::string WindowSDL::GetInternalStoragePath() {
+std::string WindowSDL::getInternalStoragePath() {
 	return std::string( SDL_AndroidGetInternalStoragePath() );
 }
 
-std::string WindowSDL::GetExternalStoragePath() {
+std::string WindowSDL::getExternalStoragePath() {
 	return std::string( SDL_AndroidGetExternalStoragePath() );
 }
 
-std::string WindowSDL::GetApkPath() {
+std::string WindowSDL::getApkPath() {
 	return SDL_AndroidGetApkPath();
 }
 #endif

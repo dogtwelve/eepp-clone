@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{82CBF639-4758-374C-BAB3-85820F7DC058}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\examples">
+      <UniqueIdentifier>{FBC01DA7-DA64-C346-A892-74A554C4E041}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\examples\vbo_fbo_batch">
+      <UniqueIdentifier>{990AB7C8-3C88-4C4C-A71A-83E6346355B8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\examples\vbo_fbo_batch\vbo_fbo_batch.cpp">
+      <Filter>src\examples\vbo_fbo_batch</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

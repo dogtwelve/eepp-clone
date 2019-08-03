@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{4E506E52-23DF-2E4E-8648-00003E1ADD0F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp">
+      <UniqueIdentifier>{9134AF7B-6ABD-6F44-9DB1-991324802237}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper">
+      <UniqueIdentifier>{F357554D-207C-894F-9D66-456261BC3BFE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eepp\helper\stb_vorbis">
+      <UniqueIdentifier>{39EB9C0E-D0F9-E341-B576-80420CEC8093}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\eepp\helper\stb_vorbis\stb_vorbis.c">
+      <Filter>src\eepp\helper\stb_vorbis</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

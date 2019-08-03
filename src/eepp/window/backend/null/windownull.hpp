@@ -11,51 +11,51 @@ class EE_API WindowNull : public Window {
 		
 		virtual ~WindowNull();
 		
-		bool Create( WindowSettings Settings, ContextSettings Context );
+		bool create( WindowSettings Settings, ContextSettings Context );
 		
-		void ToggleFullscreen();
+		void toggleFullscreen();
 		
-		void Caption( const std::string& Caption );
+		void setCaption( const std::string& setCaption );
 		
-		std::string Caption();
+		std::string setCaption();
 
-		bool Icon( const std::string& Path );
+		bool setIcon( const std::string& Path );
 
-		void Minimize();
+		void minimize();
 
-		void Maximize();
+		void maximize();
 
-		void Hide();
+		void hide();
 
-		void Raise();
+		void raise();
 
-		void Show();
+		void show();
 
-		void Position( Int16 Left, Int16 Top );
+		void setPosition( Int16 Left, Int16 Top );
 
-		bool Active();
+		bool isActive();
 
-		bool Visible();
+		bool isVisible();
 
-		Vector2i Position();
+		Vector2i getPosition();
 
-		void Size( Uint32 Width, Uint32 Height, bool Windowed );
+		void setSize( Uint32 Width, Uint32 Height, bool isWindowed );
 
-		std::vector<DisplayMode> GetDisplayModes() const;
+		std::vector<DisplayMode> getDisplayModes() const;
 
-		void SetGamma( Float Red, Float Green, Float Blue );
+		void setGamma( Float Red, Float Green, Float Blue );
 
-		eeWindowContex GetContext() const;
+		eeWindowContex getContext() const;
 
-		eeWindowHandle	GetWindowHandler();
+		eeWindowHandle	getWindowHandler();
 
-		void SetDefaultContext();
+		void setDefaultContext();
 	protected:
 		friend class ClipboardNull;
 
-		void SwapBuffers();
+		void swapBuffers();
 
-		void GetMainContext();
+		void getMainContext();
 };
 
 }}}}
